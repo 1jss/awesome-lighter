@@ -8,6 +8,7 @@ This makes Awesome WM into a Lightweight Stacking WM
 - Lightweight!
 - Configurable window titlebar colors
 - Hiding dock that shows when mouse hits bottom of the screen
+- Resize windows by dragging window border
 - Runs perfectly without compositor
 
 ## Dependencies:
@@ -27,7 +28,7 @@ This makes Awesome WM into a Lightweight Stacking WM
 
 But they are optional an can be exchanged in `lua.rc`.
 
-## Installation
+## Installation:
 1. Put the `awesome` folder in the hidden `.congfig` folder in your `home` folder. (Like this: `/home/USERNAME/.config/awesome`)
 2. Edit default apps and connections in `rc.lua`
 3. Done
@@ -56,3 +57,8 @@ Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome
 - Mainly adapted from [default rc.lua](https://awesomewm.org/doc/api/sample%20files/rc.lua.html)
 - Some elements are adapted from [Mirage by WillPower3309](https://github.com/WillPower3309/awesome-dotfiles)
 - Inspiration from the very beautiful (but heavy) [Nice by mut-ex](https://github.com/mut-ex/awesome-wm-nice)
+
+## Tags:
+- awesomewm
+- dotfiles
+- lua
