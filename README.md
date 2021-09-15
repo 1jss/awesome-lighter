@@ -6,9 +6,9 @@ This makes Awesome WM into a Lightweight Stacking WM
 
 ## Features:
 - Lightweight!
-- Configurable window titlebar colors
-- Icon dock on the left
+- Configurable window titlebar colors per application
 - Resize windows by dragging window border
+- Icon dock with launcher on the left
 - Runs perfectly without compositor
 
 ## Dependencies:
@@ -21,8 +21,6 @@ This makes Awesome WM into a Lightweight Stacking WM
 
 **Is configured for:**
 - lxterminal
-- pcmanfm
-- rofi
 - play.py
 - connman-gtk
 

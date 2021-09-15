@@ -77,12 +77,9 @@ apps = {
   power_manager = "", -- recommended: xfce4-power-manager
   bluetooth_manager = "connman-gtk --no-icon",
   terminal = "lxterminal",
-  launcher = "rofi -show drun -modi drun -theme " .. config_dir .. "rofi.rasi",
-  guilauncher = "play.py",
-  run = "rofi -show run -theme " .. config_dir .. "rofi.rasi",
+  launcher = "play.py",
   lock = "light-locker-command -l",
-  screenshot = "scrot -e 'mv $f ~/ 2>/dev/null'",
-  filebrowser = "pcmanfm"
+  screenshot = "scrot -e 'mv $f ~/ 2>/dev/null'"
 }
 
 -- define wireless and ethernet interface names for the network widget
@@ -326,33 +323,12 @@ awful.key({modkey}, "t",
   end,
   {description = "open a terminal", group = "launcher"}
 ),
--- launch rofi
-awful.key({modkey}, "a",
-  function()
-    awful.spawn(apps.guilauncher)
-  end,
-  {description = "graphical application launcher", group = "launcher"}
-),
--- launch rofi
+-- Spawn launcher
 awful.key({modkey}, "space",
   function()
     awful.spawn(apps.launcher)
   end,
   {description = "application launcher", group = "launcher"}
-),
--- launch rofi run
-awful.key({modkey}, "r",
-  function()
-    awful.spawn(apps.run)
-  end,
-  {description = "run command", group = "launcher"}
-),
--- launch rofi run
-awful.key({altkey}, "F2",
-  function()
-    awful.spawn(apps.run)
-  end
-  --{description = "run prompt", group = "launcher"}
 ),
 
 -- Standard programs
