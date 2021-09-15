@@ -76,9 +76,9 @@ local hide_backlight_adjust = gears.timer {
 -- show backlight-adjust when "backlight_change" signal is emitted
 awesome.connect_signal("backlight_change",
    function()
-      -- set new volume value
+      -- set new brightness value
       awful.spawn.easy_async_with_shell(
-         "xbacklight",
+         "cat /sys/class/backlight/nv_backlight/actual_brightness",
          function(stdout)
             local backlight_level = tonumber(stdout)
             backlight_bar.value = backlight_level

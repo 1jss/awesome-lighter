@@ -7,6 +7,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
+
 local gears = require("gears")
 local dpi = beautiful.xresources.apply_dpi
 
@@ -32,8 +33,25 @@ dock_panel.create = function(s)
             	)
         	end
         end)
-   )
-   
+    )
+
+    local play_button = wibox.widget {
+        image  = beautiful.play_icon,
+        resize = true,
+        valign = "center",
+        halign = "center",
+        widget = wibox.widget.imagebox
+    }
+	play_button:buttons(
+	   gears.table.join(
+	      awful.button({}, 1, nil,
+	         function()
+	            awful.spawn(apps.guilauncher)
+	         end
+	      )
+	   )
+	)
+	   
 	s.mytasklist = awful.widget.tasklist {
 	    screen   = s,
 	    filter   = awful.widget.tasklist.filter.currenttags,
@@ -45,7 +63,7 @@ dock_panel.create = function(s)
 	            widget = wibox.container.place,
 	        },
 	        spacing = 0,
-	        layout  = wibox.layout.fixed.horizontal
+	        layout  = wibox.layout.fixed.vertical
 	    },
 	    -- Notice that there is *NO* wibox.wibox prefix, it is a template,
 	    -- not a widget instance.
@@ -62,7 +80,7 @@ dock_panel.create = function(s)
 				    text = c.name,
 				    objects = {self},
 				    mode = 'outside',
-				    align = 'top',
+				    align = 'right',
 				    preferred_positions = {'top', 'left', 'right', 'bottom'},
 				    margin_leftright = dpi(12),
 				    margin_topbottom = dpi(8)
@@ -73,56 +91,57 @@ dock_panel.create = function(s)
 	
     local dock = awful.wibar({
     	screen = s,
-    	position = "bottom",
+    	position = "left",
     	--ontop = true,
-    	height = dpi(64),
-    	width = s.geometry.width,
+    	height = s.geometry.height,
+    	width = dpi(64),
 		stretch = true,
 		type = "dock",
     	bg = beautiful.tasklist_bg_normal,
-    	visible = false
+    	visible = true
     })
   	
     dock:setup {
     	expand = "none",
-    	layout = wibox.layout.align.horizontal,
-    	nil,
-     	s.mytasklist,
-    	nil
+    	layout = wibox.layout.align.vertical,
+    	s.mytasklist,
+		nil,
+    	wibox.container.margin( play_button,
+    		dpi(6), dpi(6), dpi(6), dpi(6)),
     }
 
 	-- Invisible trigger that enables the dock
-    local dock_trigger = awful.wibar({
-    	screen = s,
-	    position = "bottom",
-	    height = dpi(1),
-    	ontop = true,
-	    width = s.geometry.width,
-    	bg = "#00000000",
-    	visible = true
-	})
+    -- local dock_trigger = awful.wibar({
+    --	screen = s,
+	--	position = "left",
+	--	height = s.geometry.height,
+    --	ontop = true,
+	--	width = dpi(1),
+    --	bg = "#00000000",
+    --	visible = true
+	--})
 
 	-- Show dock and hide trigger
-	dock_trigger:connect_signal("mouse::enter", function()
-		dock.visible = true
-		dock_trigger.visible = false			
-	end)
+	--dock_trigger:connect_signal("mouse::enter", function()
+	--	dock.visible = true
+	--	dock_trigger.visible = false			
+	--end)
 	-- Hide dock and show trigger
-	dock:connect_signal("mouse::leave", function()
-		dock.visible = false
-		dock_trigger.visible = true
-	end)
+	--dock:connect_signal("mouse::leave", function()
+	--	dock.visible = false
+	--	dock_trigger.visible = true
+	--end)
 
-   -- hide dock when client is fullscreen
-   local function change_dock_visibility(client)
-      if client.screen == s then
-         dock.ontop = not client.fullscreen
-      end
-   end
+    -- hide dock when client is fullscreen
+    local function change_dock_visibility(client)
+    	if client.screen == s then
+        	dock.ontop = not client.fullscreen
+    	end
+    end
 
-   -- connect dock visibility function to relevant signals
-   client.connect_signal("property::fullscreen", change_dock_visibility)
-   client.connect_signal("focus", change_dock_visibility)
+    -- connect dock visibility function to relevant signals
+    client.connect_signal("property::fullscreen", change_dock_visibility)
+    client.connect_signal("focus", change_dock_visibility)
 
 end
 

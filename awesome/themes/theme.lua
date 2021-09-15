@@ -102,6 +102,7 @@ theme.hud_panel_bg  = "#ffffff"
 theme.bg_systray = theme.bg_normal
 theme.systray_icon_spacing = dpi(4)
 
+
 theme.menu_height = dpi(32)
 theme.menu_width  = dpi(200)
 
@@ -143,10 +144,14 @@ theme.titlebar_maximized_button_focus_inactive_hover  = icon_dir .. 'maximized_f
 -- beautiful.variable in your rc.lua
 --theme.bg_widget = "#cc0000"
 
-theme.wallpaper = themes_path .. "background.jpg"
+theme.wallpaper = themes_path.."background.jpg"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = "Mkos-Big-Sur"
+
+-- Launcher icon
+theme.play_icon = gears.filesystem.get_configuration_dir() .. "/icons/launcher/play.svg"
+
 
 return theme

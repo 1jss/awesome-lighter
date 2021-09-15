@@ -78,6 +78,7 @@ apps = {
   bluetooth_manager = "connman-gtk --no-icon",
   terminal = "lxterminal",
   launcher = "rofi -show drun -modi drun -theme " .. config_dir .. "rofi.rasi",
+  guilauncher = "play.py",
   run = "rofi -show run -theme " .. config_dir .. "rofi.rasi",
   lock = "light-locker-command -l",
   screenshot = "scrot -e 'mv $f ~/ 2>/dev/null'",
@@ -87,13 +88,14 @@ apps = {
 -- define wireless and ethernet interface names for the network widget
 -- use `ip link` command to determine these
 network_interfaces = {
-  wlan = 'wls0',
-  lan = 'lan0'
+  wlan = 'wls3',
+  lan = 'enp0s25'
 }
 
 -- List of apps to run on start-up - autostart
 local run_on_start_up = {
   "lxpolkit"
+--  "syncthing -no-browser -logfile=default"
 --  "touchegg"
 }
 
@@ -325,6 +327,13 @@ awful.key({modkey}, "t",
   {description = "open a terminal", group = "launcher"}
 ),
 -- launch rofi
+awful.key({modkey}, "a",
+  function()
+    awful.spawn(apps.guilauncher)
+  end,
+  {description = "graphical application launcher", group = "launcher"}
+),
+-- launch rofi
 awful.key({modkey}, "space",
   function()
     awful.spawn(apps.launcher)
@@ -378,10 +387,17 @@ awful.key({ modkey, }, "Down",
 {description = "center mindow", group = "window"}),
 awful.key({ modkey, }, "Up",
   function (c)
-      c.maximized = not c.maximized
+      --c.maximized = not c.maximized
+
+      -- Alternative: Not using "proper" maximized state because it resizes wheen dock is shown
+      c.maximized = false
+      local f = awful.placement.left
+             + awful.placement['maximize_vertically']
+             + awful.placement['maximize_horizontally']
+            f(c, {honor_workarea = true, size_hints_honor = false})
       c:raise()
   end,
-{description = "maximize / restore window", group = "window"}),
+{description = "maximize window", group = "window"}),
 awful.key({ modkey, }, "Left",
   function (c)
       c.maximized = false
