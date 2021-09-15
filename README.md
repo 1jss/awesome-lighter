@@ -2,7 +2,7 @@
 
 This makes Awesome WM into a Lightweight Stacking WM
 
-![](/screenshots/browser.png)
+![](/screenshots/launcher.png)
 
 ## Features:
 - Lightweight!
@@ -40,9 +40,9 @@ Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome
 ```
 
 ## Screenshots:
-![](/screenshots/terminal.png)
-![](/screenshots/files_terminal.png)
-![](/screenshots/tiling_dock.png)
+![](/screenshots/files.png)
+![](/screenshots/online_terminal.png)
+![](/screenshots/tiling.png)
 
 ### Screenshot Details:
 - **WM**: Awesome 4.3

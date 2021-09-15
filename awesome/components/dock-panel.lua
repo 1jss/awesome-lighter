@@ -46,7 +46,7 @@ dock_panel.create = function(s)
 	   gears.table.join(
 	      awful.button({}, 1, nil,
 	         function()
-	            awful.spawn(apps.guilauncher)
+	            awful.spawn(apps.launcher)
 	         end
 	      )
 	   )
