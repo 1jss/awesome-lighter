@@ -7,7 +7,7 @@ This makes Awesome WM into a Lightweight Stacking WM
 ## Features:
 - Lightweight!
 - Configurable window titlebar colors
-- Hiding dock that shows when mouse hits bottom of the screen
+- Icon dock on the left
 - Resize windows by dragging window border
 - Runs perfectly without compositor
 
@@ -17,19 +17,19 @@ This makes Awesome WM into a Lightweight Stacking WM
 - awesome 4.3
 
 **Extra:**
-- xbacklight (for backlight HUD)
 - alsa-utils (for volume HUD)
 
 **Is configured for:**
 - lxterminal
 - pcmanfm
 - rofi
+- play.py
 - connman-gtk
 
 But they are optional an can be exchanged in `lua.rc`.
 
 ## Installation:
-1. Put the `awesome` folder in the hidden `.congfig` folder in your `home` folder. (Like this: `/home/USERNAME/.config/awesome`)
+1. Put the `awesome` folder in the hidden `.config` folder in your `home` directory. (Like this: `/home/USERNAME/.config/awesome`)
 2. Edit default apps and connections in `rc.lua`
 3. Done
 
