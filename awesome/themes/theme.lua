@@ -69,7 +69,7 @@ theme.taglist_disable_icon = true
 -- Tasklist
 theme.tasklist_font = theme.font
 
-theme.tasklist_bg_normal    = "#222222"
+theme.tasklist_bg_normal    = "#020305"
 theme.tasklist_bg_focus     = theme.bg_focus
 theme.tasklist_bg_urgent    = theme.bg_urgent
 
@@ -79,7 +79,7 @@ theme.tasklist_fg_normal    = theme.fg_normal
 
 -- Panel Sizing
 theme.top_panel_height  = dpi(32)
-theme.top_panel_bg      = "#222222"
+theme.top_panel_bg      = "#020305"
 
 -- Notification Sizing
 theme.notification_max_width    = dpi(350)

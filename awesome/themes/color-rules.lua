@@ -25,6 +25,7 @@ local color_table = {
 	["lxrandr"]="#e8e8e7",
 	["gpick"]="#e8e8e7",
 	["gimp-2.10"]="#454545",
+	["chromium"]="#dee1e6",
 	["keeweb"]="#1e1e1e"
 }
 
